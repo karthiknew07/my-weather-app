@@ -1,0 +1,33 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1>Weather App</h1>
+        <button id="dark-mode-toggle" aria-label="Toggle dark mode">🌙 Dark Mode</button>
+      </header>
+      <div class="search">
+        <input
+          id="city-input"
+          type="text"
+          placeholder="Enter city"
+          aria-label="City name"
+        />
+        <button id="search-btn" aria-label="Search for city weather">Search</button>
+      </div>
+      <div id="error-display" class="error-display" aria-live="polite"></div>
+      <div id="weather-display" class="weather-display" aria-live="polite">
+        <p>Search for a city's weather to see details here.</p>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
