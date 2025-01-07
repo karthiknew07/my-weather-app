@@ -90,6 +90,7 @@ const displayWeather = (weatherData: WeatherData, forecastData: ForecastData): v
     const forecastList = forecastData.list.filter((_, index) => index % 8 === 0); // Get daily forecast
 
     weatherDisplay.innerHTML = `
+    <center>
       <div class="weather-card">
         <h2>${name}</h2>
         <img src="http://openweathermap.org/img/wn/${weather[0].icon}@2x.png" alt="${weather[0].description}" />
@@ -101,6 +102,7 @@ const displayWeather = (weatherData: WeatherData, forecastData: ForecastData): v
         <p><strong>Sunrise:</strong> ${new Date(sys.sunrise * 1000).toLocaleTimeString()}</p>
         <p><strong>Sunset:</strong> ${new Date(sys.sunset * 1000).toLocaleTimeString()}</p>
       </div>
+      </center>
       
       <div class="forecast">
         <h3><center>5-Day Forecast</center></h3>
