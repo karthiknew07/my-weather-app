@@ -4,6 +4,9 @@
   --card-bg: #ffffff;
   --primary-color: #007bff;
   --error-color: #ff4d4d;
+  --button-hover-color: #0056b3;
+  --input-focus-border-color: #007bff;
+  --input-bg: #f9f9f9;
 }
 
 [data-theme="dark"] {
@@ -11,6 +14,9 @@
   --text-color: #e0e0e0;
   --card-bg: #242424;
   --primary-color: #4dabf7;
+  --button-hover-color: #4c8cf0;
+  --input-focus-border-color: #4dabf7;
+  --input-bg: #333;
 }
 
 body {
@@ -19,15 +25,16 @@ body {
   color: var(--text-color, #333);
   margin: 0;
   padding: 0;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .container {
-  max-width: 600px;
+  max-width: 800px;
   margin: 50px auto;
   padding: 20px;
   border-radius: 10px;
   background-color: var(--card-bg, #ffffff);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s, color 0.3s;
 }
 
@@ -39,19 +46,24 @@ body {
 }
 
 .header button {
-  padding: 5px 10px;
+  padding: 10px 20px;
   font-size: 1rem;
   border: none;
   border-radius: 5px;
   background-color: var(--primary-color, #007bff);
   color: white;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
 }
 
 .header button:hover {
-  background-color: #0056b3;
+  background-color: var(--button-hover-color);
   transform: scale(1.05);
+}
+
+.header button:focus {
+  outline: none;
+  box-shadow: 0 0 5px var(--primary-color);
 }
 
 .search {
@@ -65,20 +77,27 @@ body {
   flex: 1;
   border: 1px solid #ccc;
   border-radius: 5px;
+  background-color: var(--input-bg);
+  transition: border-color 0.3s;
+}
+
+.search input:focus {
+  border-color: var(--input-focus-border-color);
+  outline: none;
 }
 
 .search button {
   padding: 10px 15px;
   border: none;
   border-radius: 5px;
-  background-color: var(--primary-color, #007bff);
+  background-color: var(--primary-color);
   color: white;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.2s;
 }
 
 .search button:hover {
-  background-color: #0056b3;
+  background-color: var(--button-hover-color);
   transform: scale(1.05);
 }
 
@@ -87,11 +106,30 @@ body {
 }
 
 .error {
-  color: var(--error-color, #ff4d4d);
+  color: var(--error-color);
   font-weight: bold;
   font-size: 1rem;
   text-align: center;
   margin-top: 20px;
+  animation: shake 0.3s ease-in-out;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
 @media (max-width: 768px) {
@@ -104,4 +142,90 @@ body {
     width: 100%;
     margin-bottom: 10px;
   }
+}
+
+.forecast {
+  display: flex;
+  flex-direction: column; 
+  gap: 20px;
+  margin-top: 30px;
+  padding: 20px;
+  max-height: 80vh; 
+  overflow-y: auto;
+}
+
+.forecast-item {
+  text-align: center;
+  padding: 20px;
+  border-radius: 15px;
+  background-color: var(--card-bg);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+  border: 1px solid #e0e0e0; 
+}
+
+.forecast-item:hover {
+  transform: scale(1.05);
+  background-color: var(--primary-color);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.forecast-item img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 10px;
+}
+
+.forecast-item .day {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: var(--text-color);
+  margin-bottom: 5px;
+}
+
+.forecast-item .temperature {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.forecast-item .description {
+  font-size: 1rem;
+  color: var(--text-color);
+  margin-top: 10px;
+}
+
+.forecast-item .date {
+  font-size: 0.9rem;
+  color: #888;
+  margin-top: 5px;
+}
+
+.forecast-item:hover .day {
+  color: white;
+}
+
+.forecast-item:hover .temperature {
+  color: white;
+}
+
+.forecast-item:hover .description {
+  color: white;
+}
+
+.suggestions-container {
+  position: absolute;
+  max-height: 200px;
+  overflow-y: auto;
+  background-color: white;
+  border: 1px solid #ddd;
+  z-index: 1000;
+  width: 300px;
+}
+.suggestion-item {
+  padding: 10px;
+  cursor: pointer;
+}
+.suggestion-item:hover {
+  background-color: #f0f0f0;
 }

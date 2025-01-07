@@ -1,6 +1,5 @@
-
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+ <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
@@ -15,19 +14,18 @@
         <button id="dark-mode-toggle" aria-label="Toggle dark mode">🌙 Dark Mode</button>
       </header>
       <div class="search">
-        <input
-          id="city-input"
-          type="text"
-          placeholder="Enter city"
-          aria-label="City name"
-        />
+        <input type="text" id="city-input" placeholder="Enter city name" autocomplete="off" />
+        <div id="city-suggestions" class="suggestions-container"></div>
+        <!--<input id="city-input" type="text" placeholder="Enter city" aria-label="City name" />
+        <ul id="city-suggestions" class="suggestions"></ul> -->
         <button id="search-btn" aria-label="Search for city weather">Search</button>
       </div>
       <div id="error-display" class="error-display" aria-live="polite"></div>
       <div id="weather-display" class="weather-display" aria-live="polite">
         <p>Search for a city's weather to see details here.</p>
       </div>
+      <div id="forecast" class="forecast"></div>
     </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
-</html>
+ </html>
