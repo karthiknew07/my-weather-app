@@ -1,4 +1,4 @@
-const apiKey = "218c011e7af98daaca5e548957b7c6df";
+const apiKey = import.meta.env.VITE_API_KEY;
 
 // Define types for the weather and forecast data
 
